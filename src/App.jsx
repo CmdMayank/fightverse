@@ -4,7 +4,7 @@ import khabib from './assets/khabib.jpg'
 import charles from './assets/charles.jpg'
 import conor from './assets/conor.jpg'
 import { useRef } from 'react'
-import Navbar from './components/Navbar'
+import navbar from './components/navbar'
 import MatchupSection from './components/MatchupSection'
 
 import { motion } from 'framer-motion'
