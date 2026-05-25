@@ -4,8 +4,11 @@ import khabib from './assets/khabib.jpg'
 import charles from './assets/charles.jpg'
 import conor from './assets/conor.jpg'
 import { useRef } from 'react'
-import navbar from './components/navbar'
+import Navbar from './components/navbar'
 import MatchupSection from './components/MatchupSection'
+import LegacySection from './components/LegacySection'
+import Footer from './components/Footer'
+import FightNightSection from './components/FightNightSection'
 
 import { motion } from 'framer-motion'
 import FighterCard from './components/FighterCard'
@@ -109,7 +112,10 @@ const scrollToFighters = () => {
           />
         </div>
       </section>
+      <LegacySection />
       <MatchupSection />
+      <FightNightSection />
+      <Footer />
 
     </div>
   )
