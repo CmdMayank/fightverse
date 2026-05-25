@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import leftFighter from '../assets/fighteft.jpg'
+import leftFighter from '../assets/fightleft.jpg'
 import rightFighter from '../assets/fightright.jpg'
 
 function FightNightSection() {
