@@ -1,33 +1,29 @@
 import { motion } from 'framer-motion'
-import leftFighter from '../assets/fightleft.jpg'
+import leftFighter from '../assets/fighteft.jpg'
 import rightFighter from '../assets/fightright.jpg'
 
 function FightNightSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
 
-      {/* Left fighter */}
-      <div className="absolute left-0 top-0 w-1/2 h-full">
-        <img
-          src={leftFighter}
-          alt="Left Fighter"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* LEFT IMAGE */}
+      <img
+        src={leftFighter}
+        alt="Khabib"
+        className="absolute left-0 top-0 w-1/2 h-full object-cover"
+      />
 
-      {/* Right fighter */}
-      <div className="absolute right-0 top-0 w-1/2 h-full">
-        <img
-          src={rightFighter}
-          alt="Right Fighter"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* RIGHT IMAGE */}
+      <img
+        src={rightFighter}
+        alt="Charles"
+        className="absolute right-0 top-0 w-1/2 h-full object-cover"
+      />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+      {/* DARK OVERLAY */}
+      <div className="absolute inset-0 bg-black/45"></div>
 
-      {/* Content */}
+      {/* CENTER CONTENT */}
       <motion.div
         initial={{ opacity: 0, scale: 0.92 }}
         whileInView={{ opacity: 1, scale: 1 }}
