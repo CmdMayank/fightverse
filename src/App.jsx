@@ -12,6 +12,7 @@ import FightNightSection from './components/FightNightSection'
 import HallOfFame from './components/HallOfFame'
 import TimelineSection from './components/TimelineSection'
 import EventDashboard from './components/EventDashboard'
+import DreamMatchLab from './components/DreamMatchLab'
 
 import { motion } from 'framer-motion'
 import FighterCard from './components/FighterCard'
@@ -118,6 +119,7 @@ const scrollToFighters = () => {
       <HallOfFame />
       <TimelineSection />
       <EventDashboard />
+      <DreamMatchLab />
       <LegacySection />
       <MatchupSection />
       <FightNightSection />
