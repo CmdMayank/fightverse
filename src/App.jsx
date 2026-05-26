@@ -10,6 +10,8 @@ import LegacySection from './components/LegacySection'
 import Footer from './components/Footer'
 import FightNightSection from './components/FightNightSection'
 import HallOfFame from './components/HallOfFame'
+import TimelineSection from './components/TimelineSection'
+import EventDashboard from './components/EventDashboard'
 
 import { motion } from 'framer-motion'
 import FighterCard from './components/FighterCard'
@@ -114,6 +116,8 @@ const scrollToFighters = () => {
         </div>
       </section>
       <HallOfFame />
+      <TimelineSection />
+      <EventDashboard />
       <LegacySection />
       <MatchupSection />
       <FightNightSection />
