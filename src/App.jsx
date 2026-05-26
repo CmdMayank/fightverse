@@ -17,6 +17,7 @@ import DreamMatchLab from './components/DreamMatchLab'
 import { motion } from 'framer-motion'
 import FighterCard from './components/FighterCard'
 
+
 function App() {
   const fightersRef = useRef(null)
 
