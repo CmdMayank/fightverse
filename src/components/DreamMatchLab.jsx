@@ -127,7 +127,7 @@ function FighterSelector({ selected, setSelected, title }) {
             <img
               src={fighter.image}
               alt={fighter.name}
-              className="w-full h-56 object-cover"
+              className="w-full h-56 object-cover object-top"
             />
 
             <div className="p-4 bg-zinc-950">
