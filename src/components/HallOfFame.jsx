@@ -33,7 +33,7 @@ function HallOfFame() {
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
         <HallCard
           name="Mike Tyson"
           nickname="Iron Mike"

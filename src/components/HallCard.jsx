@@ -5,13 +5,13 @@ function HallCard({ name, nickname, image, achievement }) {
     <motion.div
       whileHover={{ y: -12, scale: 1.03 }}
       transition={{ type: 'spring', stiffness: 220 }}
-      className="group relative rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-xl"
+      className="group relative h-full rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-xl"
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden aspect-[4/5]">
         <img
           src={image}
           alt={name}
-          className="w-full h-96 object-cover transition duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-110"
         />
       </div>
 
