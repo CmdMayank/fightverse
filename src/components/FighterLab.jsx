@@ -2,67 +2,108 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 function FighterLab() {
+  const MAX_POINTS = 350
+
   const [name, setName] = useState('')
+
   const [stats, setStats] = useState({
-    power: 50,
-    speed: 50,
-    cardio: 50,
-    fightIQ: 50,
-    grappling: 50,
+    power: 70,
+    speed: 70,
+    cardio: 70,
+    fightIQ: 70,
+    grappling: 70,
   })
 
+  const pointsUsed =
+    stats.power +
+    stats.speed +
+    stats.cardio +
+    stats.fightIQ +
+    stats.grappling
+
+  const pointsRemaining = MAX_POINTS - pointsUsed
+
   const updateStat = (key, amount) => {
-    setStats((prev) => ({
-      ...prev,
-      [key]: Math.max(0, Math.min(100, prev[key] + amount)),
-    }))
+    setStats((prev) => {
+      const newValue = prev[key] + amount
+
+      if (newValue < 0 || newValue > 100) {
+        return prev
+      }
+
+      const newStats = {
+        ...prev,
+        [key]: newValue,
+      }
+
+      const total =
+        newStats.power +
+        newStats.speed +
+        newStats.cardio +
+        newStats.fightIQ +
+        newStats.grappling
+
+      if (total > MAX_POINTS) {
+        return prev
+      }
+
+      return newStats
+    })
   }
 
   const overall = Math.round(
     Object.values(stats).reduce((a, b) => a + b, 0) / 5
   )
 
-  const getArchetype = () => {
-    if (stats.power > 85) return 'THE DESTROYER'
-    if (stats.grappling > 85) return 'THE EAGLE'
-    if (stats.speed > 85) return 'THE PHANTOM'
-    if (stats.fightIQ > 85) return 'THE STRATEGIST'
-    return 'THE TITAN'
+  const getStyle = () => {
+    if (stats.grappling >= 90) return 'Submission Specialist'
+    if (stats.power >= 90) return 'Knockout Artist'
+    if (stats.speed >= 90) return 'Counter Striker'
+    if (stats.fightIQ >= 90) return 'Tactical Master'
+    if (stats.cardio >= 90) return 'Pressure Fighter'
+
+    return 'Balanced Champion'
   }
 
   const getLegend = () => {
-    if (stats.power > 85) return 'Mike Tyson'
-    if (stats.grappling > 85) return 'Khabib'
-    if (stats.fightIQ > 85) return 'GSP'
-    if (stats.speed > 85) return 'Anderson Silva'
+    if (stats.power >= 90) return 'Mike Tyson'
+    if (stats.grappling >= 90) return 'Khabib'
+    if (stats.fightIQ >= 90) return 'GSP'
+    if (stats.speed >= 90) return 'Anderson Silva'
+
     return 'Jon Jones'
   }
 
   const StatBar = ({ label, value, statKey }) => (
     <div className="mb-8">
-      <div className="flex justify-between mb-2">
-        <span>{label}</span>
-        <span>{value}</span>
+      <div className="flex justify-between mb-3">
+        <span className="tracking-wider">{label}</span>
+        <span className="font-bold">{value}</span>
       </div>
 
       <div className="flex items-center gap-4">
         <button
           onClick={() => updateStat(statKey, -10)}
-          className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-red-600"
+          className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-red-600 transition"
         >
           -
         </button>
 
         <div className="flex-1 bg-zinc-800 rounded-full h-5 overflow-hidden">
           <div
-            className="h-full bg-red-500"
+            className="h-full bg-red-500 transition-all duration-300"
             style={{ width: `${value}%` }}
           />
         </div>
 
         <button
+          disabled={pointsRemaining <= 0}
           onClick={() => updateStat(statKey, 10)}
-          className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-red-600"
+          className={`w-10 h-10 rounded-full transition ${
+            pointsRemaining <= 0
+              ? 'bg-zinc-700 cursor-not-allowed'
+              : 'bg-zinc-800 hover:bg-red-600'
+          }`}
         >
           +
         </button>
@@ -71,10 +112,10 @@ function FighterLab() {
   )
 
   return (
-    <section className="py-32 px-8 md:px-20 bg-black">
-      <div className="text-center mb-16">
-        <p className="text-red-500 uppercase tracking-[0.5em] text-sm">
-          Interactive Lab
+    <section className="py-32 px-8 md:px-20 bg-zinc-950">
+      <div className="text-center mb-20">
+        <p className="text-red-500 uppercase tracking-[0.5em] text-sm mb-4">
+          Interactive Experience
         </p>
 
         <h2
@@ -84,30 +125,94 @@ function FighterLab() {
           FIGHTER LAB
         </h2>
 
-        <p className="text-gray-400 mt-6">
-          Forge your own combat legend.
+        <p className="mt-6 text-gray-400">
+          Forge your ultimate combat athlete.
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
+
         <input
           type="text"
-          placeholder="Enter Fighter Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full mb-12 p-4 rounded-xl bg-zinc-900 border border-white/10"
+          placeholder="Enter Fighter Name"
+          className="w-full mb-12 p-4 rounded-2xl bg-black border border-white/10 outline-none"
         />
 
-        <StatBar label="POWER" value={stats.power} statKey="power" />
-        <StatBar label="SPEED" value={stats.speed} statKey="speed" />
-        <StatBar label="CARDIO" value={stats.cardio} statKey="cardio" />
-        <StatBar label="FIGHT IQ" value={stats.fightIQ} statKey="fightIQ" />
-        <StatBar label="GRAPPLING" value={stats.grappling} statKey="grappling" />
+        <div className="grid md:grid-cols-3 gap-6 mb-14">
+
+          <div className="bg-black rounded-2xl p-6 border border-white/10">
+            <p className="text-gray-400">Draft Budget</p>
+            <p className="text-4xl font-bold">{MAX_POINTS}</p>
+          </div>
+
+          <div className="bg-black rounded-2xl p-6 border border-white/10">
+            <p className="text-gray-400">Points Used</p>
+            <p className="text-4xl font-bold">{pointsUsed}</p>
+          </div>
+
+          <div className="bg-black rounded-2xl p-6 border border-white/10">
+            <p className="text-gray-400">Remaining</p>
+
+            <p
+              className={`text-4xl font-bold ${
+                pointsRemaining <= 30
+                  ? 'text-red-500'
+                  : 'text-green-500'
+              }`}
+            >
+              {pointsRemaining}
+            </p>
+          </div>
+
+        </div>
+
+        {pointsRemaining === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center mb-12 text-green-500 text-2xl font-bold"
+          >
+            ⚔ READY TO FIGHT
+          </motion.div>
+        )}
+
+        <StatBar
+          label="POWER"
+          value={stats.power}
+          statKey="power"
+        />
+
+        <StatBar
+          label="SPEED"
+          value={stats.speed}
+          statKey="speed"
+        />
+
+        <StatBar
+          label="CARDIO"
+          value={stats.cardio}
+          statKey="cardio"
+        />
+
+        <StatBar
+          label="FIGHT IQ"
+          value={stats.fightIQ}
+          statKey="fightIQ"
+        />
+
+        <StatBar
+          label="GRAPPLING"
+          value={stats.grappling}
+          statKey="grappling"
+        />
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-16 rounded-3xl border border-red-500/20 bg-zinc-950 p-10"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mt-20 bg-black border border-red-500/20 rounded-3xl p-10"
         >
           <h3
             className="text-4xl md:text-6xl"
@@ -116,20 +221,32 @@ function FighterLab() {
             {name || 'UNNAMED FIGHTER'}
           </h3>
 
-          <p className="text-red-500 mt-4 text-xl">
-            {getArchetype()}
+          <p className="text-red-500 text-2xl mt-4">
+            {getStyle()}
           </p>
 
-          <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 mt-10">
+
             <div>
-              <p className="text-gray-400">Overall Rating</p>
-              <p className="text-5xl font-bold">{overall}</p>
+              <p className="text-gray-400 mb-2">
+                Overall Rating
+              </p>
+
+              <p className="text-6xl font-bold">
+                {overall}
+              </p>
             </div>
 
             <div>
-              <p className="text-gray-400">Closest Legend</p>
-              <p className="text-3xl font-bold">{getLegend()}</p>
+              <p className="text-gray-400 mb-2">
+                Closest Legend
+              </p>
+
+              <p className="text-3xl font-bold">
+                {getLegend()}
+              </p>
             </div>
+
           </div>
         </motion.div>
       </div>
