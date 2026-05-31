@@ -82,11 +82,12 @@ function Navbar() {
               </h3>
 
               <p className="text-gray-400 mt-2 text-sm">
-                Computer Science Student
+                If this website crashes,
                 <br />
-                Combat Sports Enthusiast
+               it was probably a feature.
                 <br />
-                Building FightVerse
+               If it works,
+               it was definitely intentional.
               </p>
 
               <div className="mt-6 flex gap-4">
