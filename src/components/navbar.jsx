@@ -101,8 +101,11 @@ function Navbar() {
                     rounded-full
                     flex items-center justify-center
                     bg-zinc-900
-                    hover:bg-red-600
-                    transition
+                     hover:scale-110
+                    hover:shadow-lg
+                    hover:shadow-red-500/30
+                   transition-all
+                   duration-300
                   "
                 >
                   <FaGithub size={20} />
@@ -118,7 +121,12 @@ function Navbar() {
                     flex items-center justify-center
                     bg-zinc-900
                     hover:bg-red-600
-                    transition
+                     hover:scale-110
+                    hover:shadow-lg
+                    hover:shadow-red-500/30
+                    transition-all
+                    duration-300
+                    
                   "
                 >
                   <FaLinkedin size={20} />
@@ -133,8 +141,11 @@ function Navbar() {
                     rounded-full
                     flex items-center justify-center
                     bg-zinc-900
-                    hover:bg-red-600
-                    transition
+                     hover:scale-110
+                    hover:shadow-lg
+                    hover:shadow-red-500/30
+                    transition-all
+                    duration-300
                   "
                 >
                   <FaInstagram size={20} />
