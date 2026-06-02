@@ -21,6 +21,10 @@ import FighterCard from './components/FighterCard'
 
 function App() {
   const fightersRef = useRef(null)
+  const hallRef = useRef(null)
+  const timelineRef = useRef(null)
+  const dreamRef = useRef(null)
+  const labRef = useRef(null)
 
 const scrollToFighters = () => {
   fightersRef.current?.scrollIntoView({
@@ -29,7 +33,13 @@ const scrollToFighters = () => {
 }
   return (
     <div className="bg-black text-white">
-      <Navbar scrollToFighters={scrollToFighters} />
+      <Navbar
+        scrollToFighters={scrollToFighters}
+        hallRef={hallRef}
+        timelineRef={timelineRef}
+        dreamRef={dreamRef}
+       labRef={labRef}
+      />
 
       {/* HERO SECTION */}
       <section
@@ -118,11 +128,19 @@ const scrollToFighters = () => {
           />
         </div>
       </section>
-      <HallOfFame />
-      <TimelineSection />
+      <section ref={hallRef}>
+       <HallOfFame />
+      </section>
+      <section ref={timelineRef}>
+        <TimelineSection />
+      </section>
       <EventDashboard />
-      <DreamMatchLab />
-      <FighterLab />
+      <section ref={dreamRef}>
+        <DreamMatchLab />
+      </section>
+      <section ref={labRef}>
+        <FighterLab />
+      </section>
       <LegacySection />
       <MatchupSection />
       <FightNightSection />

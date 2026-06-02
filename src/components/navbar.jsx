@@ -1,8 +1,19 @@
 import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
-function Navbar() {
+function Navbar({
+  scrollToFighters,
+  hallRef,
+  timelineRef,
+  dreamRef,
+  labRef,
+}) {
   const [showDeveloper, setShowDeveloper] = useState(false)
+  const scrollToSection = (ref) => {
+  ref.current?.scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/10">
@@ -19,19 +30,31 @@ function Navbar() {
         {/* Navigation */}
         <div className="flex items-center gap-10 text-sm uppercase tracking-[0.15em]">
 
-          <button className="hover:text-red-500 transition duration-300">
-            Hall Of Fame
-          </button>
+          <button
+          onClick={() => scrollToSection(hallRef)}
+          className="hover:text-red-500 transition duration-300"
+          >
+  Hall Of Fame
+</button>
 
-          <button className="hover:text-red-500 transition duration-300">
+          <button
+            onClick={() => scrollToSection(timelineRef)}
+            className="hover:text-red-500 transition duration-300"
+          >
             Timeline
           </button>
 
-          <button className="hover:text-red-500 transition duration-300">
+          <button
+            onClick={() => scrollToSection(dreamRef)}
+            className="hover:text-red-500 transition duration-300"
+          >
             Dream Lab
           </button>
 
-          <button className="hover:text-red-500 transition duration-300">
+          <button
+            onClick={() => scrollToSection(labRef)}
+            className="hover:text-red-500 transition duration-300"
+          >
             Fighter Lab
           </button>
 
