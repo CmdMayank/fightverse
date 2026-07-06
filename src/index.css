@@ -24,3 +24,6 @@ body {
   border-radius: 999px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
