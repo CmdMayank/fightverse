@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 function FighterLab() {
-  const MAX_POINTS = 350
+ const MAX_POINTS = 350
 
   const [name, setName] = useState('')
 
