@@ -157,7 +157,7 @@ function Navbar({
 
                 <a
                   href="https://www.instagram.com/aka.mayankkk/"
-                  target="_blank"
+                  target="_blank "
                   rel="noreferrer"
                   className="
                     w-12 h-12
