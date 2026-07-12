@@ -113,7 +113,12 @@ const scrollToFighters = () => {
             image={khabib}
           />
 
-          
+          <FighterCard
+            name="Charles Oliveira"
+            nickname="Do Bronx"
+            record="35 Wins • Submission King"
+            image={charles}
+          />
 
           <FighterCard
             name="Conor McGregor"
