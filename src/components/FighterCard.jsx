@@ -7,9 +7,7 @@ function FighterCard({ name, nickname, record, image }) {
       className="bg-zinc-900 rounded-2xl overflow-hidden shadow-xl border border-zinc-800"
     >
       <img
-        src={image}
-        alt={name}
-        className="w-full h-80 object-cover"
+        
       />
 
       <div className="p-6">
