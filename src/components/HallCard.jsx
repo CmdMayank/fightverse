@@ -23,8 +23,7 @@ function HallCard({ name, nickname, image, achievement }) {
         </p>
 
         <h3
-          className="text-3xl font-bold"
-          style={{ fontFamily: 'Bebas Neue, sans-serif' }}
+          
         >
           {name}
         </h3>
