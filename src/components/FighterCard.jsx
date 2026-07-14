@@ -26,3 +26,4 @@ function FighterCard({ name, nickname, record, image }) {
   )
 }
 
+export default FighterCard 
