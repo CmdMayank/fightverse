@@ -58,12 +58,7 @@ function MatchupSection() {
         KHABIB <span className="text-red-500">VS</span> CHARLES
       </motion.h2>
 
-      <div className="max-w-4xl mx-auto">
-        <StatBar label="Striking" left={8} right={9} />
-        <StatBar label="Grappling" left={10} right={8} />
-        <StatBar label="Cardio" left={10} right={9} />
-        <StatBar label="Finishing" left={7} right={10} />
-      </div>
+      
     </section>
   )
 }
