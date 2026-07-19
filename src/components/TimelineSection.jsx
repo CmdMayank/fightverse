@@ -7,7 +7,12 @@ const eras = [
     description:
       'A teenage wrecking machine who made fear a legitimate fight strategy.',
   },
-  
+  {
+    year: '2008',
+    title: 'GSP ERA',
+    description:
+      'Precision, discipline, and elite fight IQ redefined championship excellence.',
+  },
   {
     year: '2013',
     title: 'SILVA ERA',
