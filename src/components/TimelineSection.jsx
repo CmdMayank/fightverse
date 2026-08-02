@@ -95,7 +95,6 @@ function TimelineSection() {
           </motion.div>
         ))}
       </div>
-      
     </section>
   )
 }
