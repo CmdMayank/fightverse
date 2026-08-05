@@ -77,7 +77,6 @@ const scrollToFighters = () => {
             Where warriors are forged, legends collide, and every second feels cinematic.
           </motion.p>
 
-
           <motion.button
             onClick={scrollToFighters}
             initial={{ opacity: 0, scale: 0.7 }}
