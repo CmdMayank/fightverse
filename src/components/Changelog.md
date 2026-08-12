@@ -17,7 +17,6 @@
 - Better project structure
 - Responsive layout for desktop
 
-
 ### 🚧 Coming Soon
 - Enhanced navigation
 - Mobile optimization
