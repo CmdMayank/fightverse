@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 function EventDashboard() {
-   const targetDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000)
+  const [targetDate] = useState(() => new Date(Date.now() + 10 * 24 * 60 * 60 * 1000))
 
 const [timeLeft, setTimeLeft] = useState({
   days: 0,
@@ -35,7 +35,7 @@ useEffect(() => {
   }, 1000)
 
   return () => clearInterval(timer)
-}, [])
+}, [targetDate])
   return (
     <section className="py-32 px-8 md:px-20 bg-black">
       

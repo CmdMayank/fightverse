@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 function Navbar({
-  scrollToFighters,
   hallRef,
   timelineRef,
   dreamRef,

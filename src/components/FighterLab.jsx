@@ -1,6 +1,43 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
+const StatBar = ({ label, value, statKey, updateStat, pointsRemaining }) => (
+  <div className="mb-8">
+    <div className="flex justify-between mb-3">
+      <span className="tracking-wider">{label}</span>
+      <span className="font-bold">{value}</span>
+    </div>
+
+    <div className="flex items-center gap-4">
+      <button
+        onClick={() => updateStat(statKey, -10)}
+        className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-red-600 transition"
+      >
+        -
+      </button>
+
+      <div className="flex-1 bg-zinc-800 rounded-full h-5 overflow-hidden">
+        <div
+          className="h-full bg-red-500 transition-all duration-300"
+          style={{ width: `${value}%` }}
+        />
+      </div>
+
+      <button
+        disabled={pointsRemaining <= 0}
+        onClick={() => updateStat(statKey, 10)}
+        className={`w-10 h-10 rounded-full transition ${
+          pointsRemaining <= 0
+            ? 'bg-zinc-700 cursor-not-allowed'
+            : 'bg-zinc-800 hover:bg-red-600'
+        }`}
+      >
+        +
+      </button>
+    </div>
+  </div>
+)
+
 function FighterLab() {
  const MAX_POINTS = 350
 
@@ -74,42 +111,7 @@ function FighterLab() {
     return 'Jon Jones'
   }
 
-  const StatBar = ({ label, value, statKey }) => (
-    <div className="mb-8">
-      <div className="flex justify-between mb-3">
-        <span className="tracking-wider">{label}</span>
-        <span className="font-bold">{value}</span>
-      </div>
 
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => updateStat(statKey, -10)}
-          className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-red-600 transition"
-        >
-          -
-        </button>
-
-        <div className="flex-1 bg-zinc-800 rounded-full h-5 overflow-hidden">
-          <div
-            className="h-full bg-red-500 transition-all duration-300"
-            style={{ width: `${value}%` }}
-          />
-        </div>
-
-        <button
-          disabled={pointsRemaining <= 0}
-          onClick={() => updateStat(statKey, 10)}
-          className={`w-10 h-10 rounded-full transition ${
-            pointsRemaining <= 0
-              ? 'bg-zinc-700 cursor-not-allowed'
-              : 'bg-zinc-800 hover:bg-red-600'
-          }`}
-        >
-          +
-        </button>
-      </div>
-    </div>
-  )
 
   return (
     <section className="py-32 px-8 md:px-20 bg-zinc-950">
@@ -182,30 +184,40 @@ function FighterLab() {
           label="POWER"
           value={stats.power}
           statKey="power"
+          updateStat={updateStat}
+          pointsRemaining={pointsRemaining}
         />
 
         <StatBar
           label="SPEED"
           value={stats.speed}
           statKey="speed"
+          updateStat={updateStat}
+          pointsRemaining={pointsRemaining}
         />
 
         <StatBar
           label="CARDIO"
           value={stats.cardio}
           statKey="cardio"
+          updateStat={updateStat}
+          pointsRemaining={pointsRemaining}
         />
 
         <StatBar
           label="FIGHT IQ"
           value={stats.fightIQ}
           statKey="fightIQ"
+          updateStat={updateStat}
+          pointsRemaining={pointsRemaining}
         />
 
         <StatBar
           label="GRAPPLING"
           value={stats.grappling}
           statKey="grappling"
+          updateStat={updateStat}
+          pointsRemaining={pointsRemaining}
         />
 
         <motion.div
