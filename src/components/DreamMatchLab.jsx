@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-
-
 import mike from '../assets/mike.jpg'
 import khabib from '../assets/khabib.jpg'
 import conor from '../assets/conor.jpg'
