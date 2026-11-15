@@ -32,7 +32,6 @@ const fighters = [
       durability: 90,
     },
   },
-  
   {
     name: 'Conor',
     image: conor,
